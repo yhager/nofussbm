@@ -27,8 +27,8 @@ from urlparse import parse_qs
 from flask import Blueprint, make_response, request, g, json, abort
 from pymongo.errors import OperationFailure, DuplicateKeyError
 
-from . import Config, mongo, textify
-from .helpers import send_mail, to_id, query_from_dict
+from . import Config, mongo
+from .helpers import send_mail, to_id, query_from_dict, textify
 
 
 api = Blueprint( 'api', __name__ )

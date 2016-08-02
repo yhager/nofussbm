@@ -17,6 +17,7 @@
 
 from email.mime.text import MIMEText
 from smtplib import SMTP
+from flask import make_response
 
 from bson.objectid import ObjectId, InvalidId
 
@@ -55,3 +56,10 @@ def send_mail( frm, to, subject, body ):
 	#s.login( Config.SENDGRID_USERNAME, Config.SENDGRID_PASSWORD )
 	s.sendmail( frm, [ to ], msg.as_string() )
 	s.quit()
+
+
+def textify( text, code = 200 ):
+	response = make_response( text + '\n', code )
+	response.headers[ 'Content-Type' ] = 'text/plain; charset=UTF-8'
+	return response
+

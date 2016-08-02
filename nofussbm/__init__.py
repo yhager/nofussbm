@@ -39,7 +39,7 @@ app.config[ 'MONGO_CONNECT' ] = 'False' # http://api.mongodb.org/python/current/
 mongo = PyMongo( app )
 
 from .api import api
-from .helpers import query_from_dict
+from .helpers import query_from_dict, textify
 from .tags import tags
 from .json import NofussbmJSONEncoder, NofussbmJSONDecoder
 app.json_encoder = NofussbmJSONEncoder
@@ -67,11 +67,6 @@ app.logger.setLevel( DEBUG )
 
 
 # Helpers
-
-def textify( text, code = 200 ):
-	response = make_response( text + '\n', code )
-	response.headers[ 'Content-Type' ] = 'text/plain; charset=UTF-8'
-	return response
 
 def ident2email( ident ):
 	if '@' in ident: email = ident
