@@ -51,7 +51,7 @@ def send_mail( frm, to, subject, body ):
 	msg[ 'Subject' ] = subject
 	msg[ 'From' ] = frm
 	msg[ 'To' ] = to
-	s = SMTP( 'smtp.sendgrid.net' )
-	s.login( Config.SENDGRID_USERNAME, Config.SENDGRID_PASSWORD )
+	s = SMTP( 'localhost' )
+	#s.login( Config.SENDGRID_USERNAME, Config.SENDGRID_PASSWORD )
 	s.sendmail( frm, [ to ], msg.as_string() )
 	s.quit()

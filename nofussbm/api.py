@@ -185,7 +185,7 @@ def sendkey():
 	key = new_key( email )
 	mongo.db.emails.insert( { 'email': email, 'key': key, 'ip': request.remote_addr, 'date': datetime.utcnow() } )
 	try:
-		send_mail( 'Massimo Santini <massimo.santini@gmail.com>', email, 'Your "No Fuss Bookmark" API key', 'Your key is {0}'.format( key ) )
+		send_mail( 'Yuval Hager <yhager@yhager.com>', email, 'Your "No Fuss Bookmark" API key', 'Your key is {0}'.format( key ) )
 	except:
 		abort( 500 )
 	return ''
